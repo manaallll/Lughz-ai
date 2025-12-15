@@ -1,0 +1,41 @@
+/* src/index.css */
+
+/* These three lines are Tailwind CSS "directives".
+   They tell Tailwind to inject its base styles (like resets),
+   component styles, and utility classes into your CSS.
+   They are essential for Tailwind to work. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* We use a CSS rule to target the main 'root' div where our React app lives.
+   - width: 100% and height: 100vh ensure our app can fill the entire browser screen.
+   - 'isolation: isolate' is a CSS property that creates a new "stacking context".
+     This is a good practice when you plan to mix 2D HTML elements with 3D scenes
+     (which we might do later), as it helps prevent weird visual layering bugs. */
+#root {
+  width: 100%;
+  height: 100vh;
+  isolation: isolate;
+}
+
+/* This defines our custom fade-in animation using CSS keyframes. */
+@keyframes fadeIn {
+  /* The starting state of the animation: invisible and slightly moved down. */
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  /* The ending state of the animation: fully visible and in its final position. */
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* This creates a reusable "utility class" that we can apply to any element in our HTML/JSX.
+   When we give an element `className="animate-fadeIn"`, it will apply the 'fadeIn'
+   animation we defined above. */
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
